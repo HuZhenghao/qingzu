@@ -1,2 +1,37 @@
 <!--home.wxml-->
-<text>home.wxml</text>
+<swiper class="banner" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circulate="{{true}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="banner-image"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="nav">
+  <view class="rent-{{rent}}" bindtap="rent">出租</view>
+  <view class="donate-{{donate}}" bindtap="donate">捐赠</view>
+</view>
+<view wx:if="{{rent_show}}" wx:for="{{rentList}}">
+  <view class="good">
+    <image src="{{item.img}}" class="good-img"></image>
+    <view class="text">
+      <view class="title">{{item.title}}<text class="price">{{item.price}}</text></view>
+      <view class="intro">{{item.intro}}</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{donate_show}}" wx:for="{{donateList}}">
+  <view class="good">
+    <image src="{{item.img}}" class="good-img"></image>
+    <view class="text">
+      <view class="title">{{item.title}}</view>
+      <view class="intro">{{item.intro}}</view>
+    </view>
+  </view>
+</view>
+<view class="mask-{{mask}}"></view>
+<view class="rent-button-{{mask}}">租</view>
+<view class="donate-button-{{mask}}">捐</view>
+<view class="add-{{add}}"  bindtap="change">
+  <view class="add-box"></view>
+</view>

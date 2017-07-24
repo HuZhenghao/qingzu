@@ -1,1 +1,202 @@
 /* home.wxss */
+.banner{
+  width: 100%;
+  height: 40vw;
+}
+.banner-image{
+  width: 100%;
+  height: 40vw;
+}
+.nav{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #ccc;
+}
+.rent-nocur{
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  font-size: 17px;
+  font-weight: 800;
+  color: #0b0b0b;
+  text-align: center;
+}
+.donate-nocur{
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  font-size: 17px;
+  font-weight: 800;
+  color: #0b0b0b;
+  text-align: center;
+}
+.rent-cur{
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  font-size: 17px;
+  font-weight: 800;
+  color: #0b0b0b;
+  text-align: center;
+  background: #e6e5e4;
+}
+.donate-cur{
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  font-size: 17px;
+  font-weight: 800;
+  color: #0b0b0b;
+  text-align: center;
+  background: #e6e5e4;
+}
+.nav view:first-child{
+  border-right: 1px solid #ccc;
+}
+.good{
+  margin: 0 30rpx;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+  clear: both;
+  overflow: hidden;
+  font-size: 0;
+}
+.good-img{
+  width: 120rpx;
+  height: 120rpx;
+  float: left;
+}
+.text{
+  box-sizing: border-box;
+  float: left;
+  width: 570rpx;
+  height: 120rpx;
+  padding-left: 20rpx;
+}
+.title{
+  position: relative;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 17px;
+  color: #000;
+  font-weight: 800;
+}
+.price{
+  position: absolute;
+  right: 0;
+  font-size: 13px;
+  color: #fd8d37;
+}
+.intro{
+  height: 70rpx;
+  font-size: 13px;
+  color: #a9a9a9;
+  overflow: hidden;
+}
+.mask-show{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.add-add{
+  position: fixed;
+  right: 24rpx;
+  bottom: 33rpx;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: #fd8d37;
+  box-shadow: 0 5px 5px #666;
+  transition: all 0.5s;
+}
+.add-cancel{
+  position: fixed;
+  right: 24rpx;
+  bottom: 33rpx;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: #fd8d37;
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+.add-box{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.add-box::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 36rpx;
+  background: #ddd;
+  transform: translate(-50%,-50%) rotate(90deg);
+}
+.add-box::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 36rpx;
+  background: #ddd;
+  transform: translate(-50%,-50%);
+}
+.rent-button-hide,.donate-button-hide{
+  position: fixed;
+  right: 24rpx;
+  bottom: 22rpx;
+  width: 83rpx;
+  height: 83rpx;
+  line-height: 83rpx;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  background: #fd8d37;
+  box-shadow: 0 5px 5px #666;
+  transition: all 0.5s;
+}
+.rent-button-show{
+  position: fixed;
+  right: 24rpx;
+  bottom: 22rpx;
+  width: 83rpx;
+  height: 83rpx;
+  line-height: 83rpx;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  opacity: 1;
+  background: #fd8d37;
+  box-shadow: 0 5px 5px #666;
+  transform: translate(-172rpx,0);
+  transition: all 0.5s;
+}
+.donate-button-show{
+  position: fixed;
+  right: 24rpx;
+  bottom: 22rpx;
+  width: 83rpx;
+  height: 83rpx;
+  line-height: 83rpx;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  opacity: 1;
+  background: #fd8d37;
+  box-shadow: 0 5px 5px #666;
+  transform: translate(-69rpx,0);
+  transition: all 0.5s;
+}

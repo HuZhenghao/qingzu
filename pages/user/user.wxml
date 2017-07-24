@@ -1,0 +1,26 @@
+<!--user.wxml-->
+<view class="userinfo">
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="rec" wx:if="{{isrecognized}}">
+    <image class="rec-img" src="../../images/user/check.png"></image><text>已认证</text>
+  </view>
+</view>
+<view class="block">
+  <view class="geren">
+    <image class="geren-img" src="../../images/user/geren.png"></image>
+    <view class="block-text">个人资料</view>
+  </view>
+  <view class="fabu">
+    <image class="fabu-img" src="../../images/user/fabu.png"></image>
+    <view class="block-text">我的发布</view>
+  </view>
+  <view class="shoucang">
+    <image class="shoucang-img" src="../../images/user/shoucang.png"></image>
+    <view class="block-text">我的收藏</view>
+  </view>
+  <view class="xiaoxi">
+    <image class="xiaoxi-img" src="../../images/user/xiaoxi.png"></image>
+    <view class="block-text">我的消息</view>
+  </view>
+</view>

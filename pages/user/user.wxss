@@ -1,0 +1,108 @@
+/* user.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 100rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  margin-top: 25rpx;
+  color: #aaa;
+}
+.rec{
+  position: relative;
+  width: 180rpx;
+  height: 46rpx;
+  margin-top: 10rpx;
+  font-size: 16px;
+  color: #09bb07;
+}
+.rec text{
+  position: absolute;
+  left: 60rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+}
+.rec-img{
+  width: 46rpx;
+  height: 46rpx;
+}
+.block{
+  margin-top: 10rpx;
+  clear: both;
+  overflow: hidden;
+}
+.geren{
+  box-sizing: border-box;
+  float: left;
+  width: 375rpx;
+  height: 375rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-left: none;
+}
+.geren-img{
+  width: 124rpx;
+  height: 128rpx;
+  margin-top: 89rpx;
+}
+.block-text{
+  height: 25rpx;
+  margin-top: 25rpx;
+  font-size: 12px;
+  color: #707070;
+}
+.fabu{
+  box-sizing: border-box;
+  float: left;
+  width: 375rpx;
+  height: 375rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.fabu-img{
+  width: 110rpx;
+  height: 114rpx;
+  margin-top: 99rpx;
+}
+.shoucang{
+  box-sizing: border-box;
+  float: left;
+  width: 375rpx;
+  height: 375rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border-right: 1px solid #ccc;
+}
+.shoucang-img{
+  width: 128rpx;
+  height: 122rpx;
+  margin-top: 89rpx;
+}
+.xiaoxi{
+  box-sizing: border-box;
+  float: left;
+  width: 375rpx;
+  height: 375rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.xiaoxi-img{
+  width: 120rpx;
+  height: 116rpx;
+  margin-top: 96rpx;
+}
