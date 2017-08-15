@@ -4,7 +4,6 @@
     "pages/user/user",
     "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/contribution/contribution",
     "pages/issue/issue"
   ],
