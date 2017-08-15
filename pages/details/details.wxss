@@ -1,0 +1,132 @@
+/* details.wxss */
+view{
+  box-sizing: border-box;
+}
+.details_container{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+
+.details_container swiper{
+  width: 100%;
+  height: 400rpx;
+}
+
+swiper-item image{
+  width: 100%;
+  height: 100%;
+}
+.master_info{
+  width: 100%;
+  height: 70rpx;
+}
+
+.id_info,
+.price_info{
+  width: 50%;
+  height: 70rpx;
+  font-size: 16px;
+  text-align: center;
+  line-height: 70rpx;
+  background: #eee;
+  overflow: hidden;
+}
+.id_info{
+  border-right: 1rpx solid #ccc;
+}
+.price_info text text{
+  color: #fd8d37;
+}
+
+.intro_info{
+  position: relative;
+  padding: 16px 4%;
+}
+.intro_info::after{
+  position: absolute;
+  bottom: 0;
+  left: 3%;
+  display: block;
+  content: "";
+  width: 94%;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.intro_info text:first-of-type{
+  display: block;
+  font-size: 16px;
+}
+.intro_info text:last-of-type{
+  display: inline-block;
+  text-indent: 36px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.message{
+  padding: 16px 4%;
+}
+.message text:first-of-type{
+  display: block;
+  font-size: 16px;
+}
+.message text:last-of-type{
+  display: inline-block;
+  margin-left: 16px;
+  font-size: 14px;
+  line-height: 22px;
+  background-color: #eee;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 98rpx;
+}
+
+.flex_column{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.star,
+.give_message{
+  padding: 5rpx 0;
+  width: 98rpx;
+  height: 98rpx;
+  background-color: #e6e5e5;
+  border-right: 1rpx solid #ccc;
+}
+.star image{
+  width: 65rpx;
+  height: 63rpx;
+}
+.give_message image{
+  margin-top: 13rpx;
+  width: 52rpx;
+  height: 46rpx;
+}
+
+.star text,
+.give_message text{
+  padding-top: 4rpx;
+  font-size: 12px;
+  line-height: 1;
+}
+
+
+.contacting{
+  width: calc(100% - 196rpx);
+  height: 98rpx;
+  text-align: center;
+  background-color: #fd8d37;
+}
+.contacting text{
+  font-size: 18px;
+  color: #eee;
+  line-height: 98rpx;
+}

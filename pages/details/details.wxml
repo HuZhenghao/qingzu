@@ -1,0 +1,41 @@
+<!--details.wxml-->
+<view class="details_container">
+  <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .7)" indicator-active-color="#fd8d37" autoplay="true" circular="true">
+    <swiper-item>
+      <image mode="scaleToFill" src="http://imglf2.nosdn.127.net/img/cEkvdnZURC9HZStmcGowTDhka3dkYU8zSTYremhaRmRQVzNoMlBOVS9leWN4Wk5nbEtqMjdRPT0.jpg?imageView&thumbnail=2000y1235&type=jpg&quality=96&stripmeta=0&type=jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image mode="scaleToFill" src="http://imglf2.nosdn.127.net/img/cEkvdnZURC9HZStmcGowTDhka3dkYU8zSTYremhaRmRQVzNoMlBOVS9leWN4Wk5nbEtqMjdRPT0.jpg?imageView&thumbnail=2000y1235&type=jpg&quality=96&stripmeta=0&type=jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image mode="scaleToFill" src="http://imglf2.nosdn.127.net/img/cEkvdnZURC9HZStmcGowTDhka3dkYU8zSTYremhaRmRQVzNoMlBOVS9leWN4Wk5nbEtqMjdRPT0.jpg?imageView&thumbnail=2000y1235&type=jpg&quality=96&stripmeta=0&type=jpg"></image>
+    </swiper-item>
+  </swiper>
+  <view class="master_info">
+    <view class="id_info left">
+      <text class="color70">物主ID：{{id}}</text>
+    </view>
+    <view class="price_info left">
+      <text  class="color70">价格：<text>price</text></text>
+    </view>
+  </view>
+  <view class="intro_info color70">
+    <text>简介：</text>
+    <text>是历史类似失守后寿司和觉得苦苦思考思考法律开始就爱上了发话了安徽</text>
+  </view>
+  <view class="message color70">
+    <text>留言：</text>
+    <text>吴彦祖：类似失守后寿司和觉得苦苦思考思考法律开始就爱上了发话了安徽</text>
+  </view>
+  <view class="footer">
+    <view class="star left flex_column" catchtap="productCollected">
+      <image src="/images/details/{{starImage}}.png"></image>
+      <text class="color70">收藏</text>
+    </view>
+    <view class="give_message left flex_column">
+      <image src="/images/details/{{messageImage}}.png"></image>
+      <text class="color70">留言</text>
+    </view>
+    <view class="contacting left"><text>联系物主</text></view>
+  </view>
+</view>

@@ -1,4 +1,7 @@
 /**app.wxss**/
+page{
+  font-family: Arial, Helvetica, sans-serif, MicrosoftYaHei;
+}
 .container {
   height: 100%;
   display: flex;
@@ -8,3 +11,15 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}
+
+.color70{
+    color: #707070;
+}
