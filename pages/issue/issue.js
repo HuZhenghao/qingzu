@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    image_src: []
   },
 
   /**
@@ -62,5 +62,16 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  // 上传图片
+  addImage() {
+    const that = this;
+    wx.chooseImage({
+      success: function(res) {
+        let tempFilePaths = res.tempFilePaths;
+        that.setData({image_src:tempFilePaths});
+      },
+    })
   }
 })
