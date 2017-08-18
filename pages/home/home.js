@@ -37,7 +37,6 @@ Page({
     var that = this;
     //获取出租列表
     app.rent.getProductByPage(5, 1, 0, function (res) {
-      console.log(res);
       that.setData({
         rentList: res.list,
         rentPage: res.currentPage
@@ -45,7 +44,6 @@ Page({
     })
     //获取捐赠列表
     app.rent.getProductByPage(2, 1, 1, function (res) {
-      console.log(res);
       that.setData({
         donateList: res.list,
         donatePage: res.currentPage

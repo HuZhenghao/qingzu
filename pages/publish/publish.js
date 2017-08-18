@@ -7,19 +7,19 @@ Page({
   data: {
     rentList: [{
       img: "../../images/home/good.png",
-      proName: "标题",
+      proName: "标题1",
       proPrice: "50元/天",
       proDescription: "物品介绍",
       cur_right: 0
     }, {
       img: "../../images/home/good.png",
-      proName: "标题",
+      proName: "标题2",
       proPrice: "50元/天",
       proDescription: "物品介绍",
       cur_right: 0
     }],
     donateList: [{
-      proName: "标题",
+      proName: "标题3",
       proDescription: "物品介绍",
       cur_right: 0
     }],
@@ -172,17 +172,16 @@ Page({
   },
   //删除
   delete(e) {
-    consle.log(1);
     var that = this;
     var index = e.currentTarget.dataset.index;
     var flag = e.currentTarget.dataset.flag;
     if (flag == 0) {
-      this.data.rentList.splice(index);
+      this.data.rentList.splice(index,1);
       this.setData({
         rentList: that.data.rentList
       })
     } else {
-      this.data.donateList.splice(index);
+      this.data.donateList.splice(index,1);
       this.setData({
         donateList: that.data.donateList
       })
