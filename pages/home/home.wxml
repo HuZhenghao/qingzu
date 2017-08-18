@@ -1,7 +1,7 @@
 <!--home.wxml-->
 <swiper class="banner" indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circulate="{{true}}">
-  <block wx:for="{{imgUrls}}">
+  <block wx:for="{{imgUrls}}" wx:key="index">
     <swiper-item>
       <image src="{{item}}" class="banner-image"></image>
     </swiper-item>
@@ -11,21 +11,21 @@
   <view class="rent-{{rent}}" bindtap="rent">出租</view>
   <view class="donate-{{donate}}" bindtap="donate">捐赠</view>
 </view>
-<view wx:if="{{rent_show}}" wx:for="{{rentList}}">
+<view wx:if="{{rent_show}}" wx:for="{{rentList}}"  wx:key="index">
   <view class="good">
     <image src="{{item.img}}" class="good-img"></image>
     <view class="text">
-      <view class="title">{{item.title}}<text class="price">{{item.price}}</text></view>
-      <view class="intro">{{item.intro}}</view>
+      <view class="title">{{item.proName}}<text class="price">{{item.proPrice}}</text></view>
+      <view class="intro">{{item.proDescription}}</view>
     </view>
   </view>
 </view>
-<view wx:if="{{donate_show}}" wx:for="{{donateList}}">
+<view wx:if="{{donate_show}}" wx:for="{{donateList}}"  wx:key="index">
   <view class="good">
-    <image src="{{item.img}}" class="good-img"></image>
+    <image src="{{donate_img}}" class="good-img"></image>
     <view class="text">
-      <view class="title">{{item.title}}</view>
-      <view class="intro">{{item.intro}}</view>
+      <view class="title">{{item.proName}}</view>
+      <view class="intro">{{item.proDescription}}</view>
     </view>
   </view>
 </view>

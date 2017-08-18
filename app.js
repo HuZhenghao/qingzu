@@ -1,4 +1,5 @@
 //app.js
+var service = "http://www.whtlkj.cn/rent/"
 App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
@@ -25,5 +26,26 @@ App({
 
   globalData: {
     userInfo: null
+  },
+  rent: {
+    //获取商品列表
+    getProductByPage: function(pageCount, currentPage, flag, cb) {
+      wx.request({
+        url: `${service}product/getProductByPage?pageCount=${pageCount}&currentPage=${currentPage}&flag=${flag}`,
+        success: function (res) {
+            if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "获取商品失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
   }
 })

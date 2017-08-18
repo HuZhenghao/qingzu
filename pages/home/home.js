@@ -1,4 +1,5 @@
 // home.js
+var app = getApp();
 Page({
 
   /**
@@ -18,39 +19,38 @@ Page({
     donate: "nocur",
     rent_show: true,
     donate_show: false,
-    rentList: [{
-      img: "../../images/home/good.png",
-      title: "标题",
-      intro: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      price: "50/天"
-    },
-    {
-      img: "../../images/home/good.png",
-      title: "标题",
-      intro: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      price: "50/天"
-    }
-    ],
-    donateList: [{
-      img: "../../images/home/donate.png",
-      title: "标题",
-      intro: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-    },
-    {
-      img: "../../images/home/donate.png",
-      title: "标题",
-      intro: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-    }
-    ],
+    rentList: [],
+    donateList: [],
+    rentPage: 0,
+    donatePage: 0,
     mask: "hide",
-    add: "add"
+    add: "add",
+    donate_img: "../../images/home/donate.png",
+    rent_isloadding: true,
+    donate_isloadding: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    //获取出租列表
+    app.rent.getProductByPage(5, 1, 0, function (res) {
+      console.log(res);
+      that.setData({
+        rentList: res.list,
+        rentPage: res.currentPage
+      })
+    })
+    //获取捐赠列表
+    app.rent.getProductByPage(2, 1, 1, function (res) {
+      console.log(res);
+      that.setData({
+        donateList: res.list,
+        donatePage: res.currentPage
+      })
+    })
   },
 
   /**
@@ -92,7 +92,45 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    if (that.data.rent_show) {
+      if (!that.data.rent_isloadding) { return false }
+      app.rent.getProductByPage(5, that.data.rentPage + 1, 0, function (res) {
+        console.log(res.list.length);
+        if (res.list.length < 5) {
+          that.setData({
+            rent_isloadding: false
+          })
+        }
+        var list = that.data.rentList;
+        for (var num in res.list) {
+          list.push(res.list[num])
+        }
+        that.setData({
+          rentList: list,
+          rentPage: res.currentPage
+        })
+      })
+    }
+    else {
+      if (!that.data.donate_isloadding) { return false }
+      app.rent.getProductByPage(5, that.data.donatePage + 1, 1, function (res) {
+        console.log(res.list.length);
+        if (res.list.length < 5) {
+          that.setData({
+            donate_isloadding: false
+          })
+        }
+        var list = that.data.donateList;
+        for (var num in res.list) {
+          list.push(res.list[num])
+        }
+        that.setData({
+          donateList: list,
+          donatePage: res.currentPage
+        })
+      })
+    }
   },
 
   /**
@@ -117,14 +155,14 @@ Page({
       donate_show: true
     })
   },
-  change: function() {
-    if(this.data.add === "add"){
+  change: function () {
+    if (this.data.add === "add") {
       this.setData({
         add: "cancel",
         mask: "show"
       })
     }
-    else{
+    else {
       this.setData({
         add: "add",
         mask: "hide"
