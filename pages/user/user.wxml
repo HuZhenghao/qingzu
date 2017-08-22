@@ -11,11 +11,11 @@
     <image class="geren-img" src="../../images/user/geren.png"></image>
     <view class="block-text">个人资料</view>
   </view>
-  <view class="fabu">
+  <view class="fabu" bindtap="toPublish">
     <image class="fabu-img" src="../../images/user/fabu.png"></image>
     <view class="block-text">我的发布</view>
   </view>
-  <view class="shoucang">
+  <view class="shoucang" bindtap="toCollect">
     <image class="shoucang-img" src="../../images/user/shoucang.png"></image>
     <view class="block-text">我的收藏</view>
   </view>

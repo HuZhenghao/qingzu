@@ -71,5 +71,15 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  toPublish:function() {
+    wx.navigateTo({
+      url: '../publish/publish',
+    })
+  },
+  toCollect: function () {
+    wx.navigateTo({
+      url: '../collect/collect',
+    })
   }
 })

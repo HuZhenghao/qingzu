@@ -1,0 +1,25 @@
+<!--pages/publish/publish.wxml-->
+<view wx:for="{{rentList}}" wx:key="index" >
+  <view class="good">
+    <view class="inner" style="right:{{item.cur_right}}rpx" data-flag="0" data-index="{{index}}" catchtouchstart="touchStart" catchtouchmove="touchMove" catchtouchend="touchEnd">
+      <image src="{{item.img}}" class="good-img"></image>
+      <view class="text">
+        <view class="title">{{item.proName}}<text class="price">{{item.proPrice}}</text></view>
+        <view class="intro">{{item.proDescription}}</view>
+      </view>
+    </view>
+    <view class="delete" data-flag="0" data-index="{{index}}" catchtap="delete" style="right:{{item.cur_right - 80}}rpx">删除</view>
+  </view>
+</view>
+<view wx:for="{{donateList}}" wx:key="index">
+  <view class="good">
+    <view class="inner"  style="right:{{item.cur_right}}rpx"  data-flag="1" data-index="{{index}}" catchtouchstart="touchStart" catchtouchmove="touchMove" catchtouchend="touchEnd">
+      <image src="{{donate_img}}" class="good-img"></image>
+      <view class="text">
+        <view class="title">{{item.proName}}</view>
+        <view class="intro">{{item.proDescription}}</view>
+      </view>
+    </view>
+    <view class="delete" data-flag="1" data-index="{{index}}" catchtap="delete" style="right:{{item.cur_right - 80}}rpx">删除</view>
+  </view>
+</view>
