@@ -48,5 +48,23 @@ App({
         }
       })
     },
+    getProductById: function(id, cb) {
+      wx.request({
+        url: `${service}product/getProductById?id=${id}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "获取商品失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    }
   }
 })

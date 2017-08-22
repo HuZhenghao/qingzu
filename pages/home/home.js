@@ -166,5 +166,24 @@ Page({
         mask: "hide"
       })
     }
+  },
+  //跳转至详情页面
+  toDetails: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var id = this.data.rentList[index].id;
+    wx.navigateTo({
+      url: '../details/details?id=' + id,
+    })
+  },
+  //跳转至捐和租页面
+  toRent: function () {
+    wx.navigateTo({
+      url: '../issue/issue',
+    })
+  },
+  toDonate: function () {
+    wx.navigateTo({
+      url: '../contribution/contribution',
+    })
   }
 })

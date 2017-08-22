@@ -130,3 +130,8 @@ swiper-item image{
   color: #eee;
   line-height: 98rpx;
 }
+
+.time{
+  padding-bottom: 10rpx;
+  font-size: 16px;
+}

@@ -13,15 +13,16 @@
   </swiper>
   <view class="master_info">
     <view class="id_info left">
-      <text class="color70">物主ID：{{id}}</text>
+      <text class="color70">物主ID：{{product.proNickname}}</text>
     </view>
     <view class="price_info left">
-      <text  class="color70">价格：<text>price</text></text>
+      <text  class="color70">价格：<text>{{product.proPrice}}</text></text>
     </view>
   </view>
   <view class="intro_info color70">
+  <view class="time">可租时间：{{product.proStartTime}}~{{product.proEndTime}}</view>
     <text>简介：</text>
-    <text>是历史类似失守后寿司和觉得苦苦思考思考法律开始就爱上了发话了安徽</text>
+    <text>{{product.proDescription}}</text>
   </view>
   <view class="message color70">
     <text>留言：</text>

@@ -11,7 +11,7 @@
   <view class="rent-{{rent}}" bindtap="rent">出租</view>
   <view class="donate-{{donate}}" bindtap="donate">捐赠</view>
 </view>
-<view wx:if="{{rent_show}}" wx:for="{{rentList}}"  wx:key="index">
+<view wx:if="{{rent_show}}" wx:for="{{rentList}}" data-index="{{index}}" wx:key="index" bindtap="toDetails">
   <view class="good">
     <image src="{{item.img}}" class="good-img"></image>
     <view class="text">
@@ -30,8 +30,8 @@
   </view>
 </view>
 <view class="mask-{{mask}}"></view>
-<view class="rent-button-{{mask}}">租</view>
-<view class="donate-button-{{mask}}">捐</view>
+<view class="rent-button-{{mask}}" bindtap="toRent">租</view>
+<view class="donate-button-{{mask}}" bindtap="toDonate">捐</view>
 <view class="add-{{add}}"  bindtap="change">
   <view class="add-box"></view>
 </view>
