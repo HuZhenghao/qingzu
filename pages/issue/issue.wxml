@@ -20,5 +20,22 @@
   <view class="price clearfix">
     <text class="left">价格</text>
     <input class="left" type="number" maxlength="10" confirm-type="done"  />
+    <text>元 /</text>
+    <picker class="cycle_day" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{cycle_day}}">{{cycle_day[index]}}</picker>
   </view>
+  <view class="time clearfix">
+    <text class="left">可租时间</text>
+    <picker mode="date" value="{{date_start}}" start="2017-09-01" end="2027-09-01" bindchange="bindDateStartChange">{{date_start}}</picker>
+    <text>——</text>
+    <picker mode="date" value="{{date_end}}" start="2017-09-01" end="2027-09-01" bindchange="bindDateEndChange">{{date_end}}</picker>
+  </view>
+  <view class="license_box">
+    <view>
+      <checkbox id="license" checked="{{false}}" />
+      <label for="license">《租赁平台使用协议》</label>
+      <image src="/images/issue/about.png"></image>
+    </view>
+    <text>一元钱公益</text>
+  </view>
+  <button class="publish">确认发布</button>
 </form>

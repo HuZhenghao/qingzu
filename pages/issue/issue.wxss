@@ -12,7 +12,6 @@ view{
 }
 
 .title{
-  margin-top: 46rpx;
   padding: 0 20rpx;
   width: 100%;
   height: 88rpx;
@@ -108,17 +107,92 @@ textarea{
   width: 550rpx;
 }
 .price{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
   padding: 20rpx 20rpx;
   width: 100%;
-  font-size: 17px;
   border-bottom: 1rpx solid #e5e5e5;
 }
-.price text{
-  line-height: 44rpx;
+.price text:first-of-type,
+.time text:first-of-type{
+  font-size: 17px;
+  font-weight: 600;
 }
 .price input{
-  margin-left: 20rpx; 
+  margin:0 20rpx;
+  width: 78rpx;
   height: 44rpx;
-  width: 50rpx;
+  min-height: 0;
   border: 1rpx solid #e5e5e5;
+}
+
+.time{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 20rpx 20rpx;
+  width: 100%;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.time picker{
+}
+.cycle_day{
+  position: relative;
+  margin-left: 20rpx;
+  width: 100rpx;
+  height: 44rpx;
+  border: 1rpx solid #e5e5e5;
+}
+.cycle_day::after{
+  content: "";
+  position: absolute;
+  top: 17rpx;
+  right: 5rpx;
+  border:  10rpx solid transparent; 
+  border-top: 10rpx solid #333;
+}
+
+.license_box{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.license_box > view:first-of-type{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height:48rpx;
+}
+
+.license_box view checkbox{
+  margin: 0;
+}
+.license_box view label{
+  display: inline-block;
+  height: 48rpx;
+  color: #939393;
+  line-height: 48rpx;
+}
+.license_box view image{
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.license_box > text:last-of-type{
+  font-size: 24rpx;
+  color: #939393;
+}
+.publish{
+  margin-top: 10rpx;
+  width: 80%;
+  height: 88rpx;
+  color: #fff;
+  background-color: #fd8d37;
 }

@@ -1,2 +1,29 @@
 <!--contribution.wxml-->
-<text>contribution.wxml</text>
+<form bindsubmit="formSubmit" bindreset="formReset" class="container">
+  <view class="title clearfix border">
+    <text class="left">标题</text>
+    <input name="title" class="left" type="text" maxlength="15" confirm-type="done" placeholder="物品名称" required />
+  </view>
+  <textarea name="intro" class="border" placeholder="请输入物品的描述，300字以内" maxlength="300" />
+  <view class="add_image border">
+    <image src="{{item}}" mode="scaleToFill" wx:for="{{image_src}}"></image> 
+    <view class="add_btn" catchtap="addImage"></view>
+  </view>
+   <view class="address clearfix border">
+    <text class="left">地址</text>
+    <input name="addr" class="left" type="text" maxlength="20" confirm-type="done" placeholder="填入地址" />
+  </view>
+  <view class="tel clearfix">
+    <text class="left">电话</text>
+    <input name="tel" class="left" type="number" maxlength="11" confirm-type="done" placeholder="填入手机号" />
+  </view>
+  <view class="license_box">
+    <view>
+      <checkbox id="license" checked="{{false}}" />
+      <label for="license">《租赁平台使用协议》</label>
+      <image src="/images/issue/about.png"></image>
+    </view>
+    <text>一元钱公益</text>
+  </view>
+  <button form-type="submit" class="publish">确认发布</button>
+</form>
