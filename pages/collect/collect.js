@@ -1,23 +1,12 @@
 // pages/collect/collect.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    rentList: [{
-      img: "../../images/home/good.png",
-      proName: "标题1",
-      proPrice: "50元/天",
-      proDescription: "物品介绍",
-      cur_right: 0
-    }, {
-      img: "../../images/home/good.png",
-      proName: "标题2",
-      proPrice: "50元/天",
-      proDescription: "物品介绍",
-      cur_right: 0
-    }],
+    rentList: [],
     startX: 0
   },
 
@@ -25,7 +14,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var uid = wx.getStorageSync("uid");
+    var nickName = wx.getStorageSync("userInfo").nickName;
+    this.setData({
+      uid: uid,
+      nickName: nickName
+    })
+    app.rent.getAllCollect(uid,nickName,function(res){
+      that.setData({
+        rentList: res
+      })
+    })
   },
 
   /**
@@ -160,16 +160,18 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     var flag = e.currentTarget.dataset.flag;
-    if (flag == 0) {
-      this.data.rentList.splice(index, 1);
-      this.setData({
-        rentList: that.data.rentList
-      })
-    } else {
-      this.data.donateList.splice(index, 1);
-      this.setData({
-        donateList: that.data.donateList
-      })
-    }
+    app.rent.delCollect(that.data.uid, that.data.rentList[index].id, function(res){
+      if (flag == 0) {
+        that.data.rentList.splice(index, 1);
+        that.setData({
+          rentList: that.data.rentList
+        })
+      } else {
+        that.data.donateList.splice(index, 1);
+        that.setData({
+          donateList: that.data.donateList
+        })
+      }
+    })
   },
 })
