@@ -7,7 +7,7 @@ Page({
    */
   data: {
     userInfo: {},
-    isrecognized: true
+    isrecognized: false
   },
 
   /**
@@ -35,7 +35,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    //判断是否认证
+    var flag = wx.getStorageSync("flag");
+    if(flag == 0){
+      that.setData({
+        isrecognized: false
+      })
+    }else{
+      that.setData({
+        isrecognized: true
+      })
+    }
   },
 
   /**
@@ -73,11 +84,23 @@ Page({
   
   },
   toPublish:function() {
+    if (wx.getStorageSync("flag") == 0) {
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
     wx.navigateTo({
       url: '../publish/publish',
     })
   },
   toCollect: function () {
+    if (wx.getStorageSync("flag") == 0) {
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
     wx.navigateTo({
       url: '../collect/collect',
     })

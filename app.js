@@ -1,14 +1,10 @@
 //app.js
 var service = "http://www.whtlkj.cn/rent/"
 App({
-  onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch: function() {
   },
 
-  getUserInfo: function (cb) {
+  getUserInfo: function(cb) {
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
@@ -16,8 +12,7 @@ App({
       //调用登录接口
       wx.getUserInfo({
         withCredentials: false,
-        success: function (res) {
-          console.log(res);
+        success: function(res) {
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
         }
@@ -30,11 +25,11 @@ App({
   },
   rent: {
     //获取商品列表
-    getProductByPage: function (pageCount, currentPage, flag, cb) {
+    getProductByPage: function(pageCount, currentPage, flag, cb) {
       wx.request({
         url: `${service}product/getProductByPage?pageCount=${pageCount}&currentPage=${currentPage}&flag=${flag}`,
         success: function (res) {
-          if (cb) { cb(res.data); }
+            if (cb) { cb(res.data); }
         },
         fail: function () {
           wx.showToast
@@ -48,7 +43,8 @@ App({
         }
       })
     },
-    getProductById: function (id, cb) {
+    //根据id获取商品
+    getProductById: function(id, cb) {
       wx.request({
         url: `${service}product/getProductById?id=${id}`,
         success: function (res) {
@@ -66,12 +62,125 @@ App({
         }
       })
     },
+    //请求后台登陆
+    login: function (id, userNickname,cb) {
+      wx.request({
+        url: `${service}user/login?id=${id}&userNickname=${userNickname}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "登录失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
+    //验证教务处
+    check: function (id, userNickname, username, password, cb) {
+      wx.request({
+        url: `${service}user/check?id=${id}&userNickname=${userNickname}&username=${username}&password=${password}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "验证失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
+    //获取收藏状态
+    getCollectState: function (colUserid, colProid, cb) {
+      wx.request({
+        url: `${service}collect/getCollectState?colUserid=${colUserid}&colProid=${colProid}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "获取收藏失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
+    //收藏物品
+    addCollect: function (colUserid, colProid, cb){
+      wx.request({
+        url: `${service}collect/addCollectByUser?colUserid=${colUserid}&colProid=${colProid}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "收藏失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
+    //删除收藏物品
+    delCollect: function (colUserid, colProid, cb) {
+      wx.request({
+        url: `${service}collect/deleteCollect?colUserid=${colUserid}&colProid=${colProid}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "删除失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
+    //获取收藏列表
+    getAllCollect: function (id, userNickname, cb) {
+      wx.request({
+        url: `${service}collect/getAllCollect?id=${id}&userNickname=${userNickname}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "获取失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
 
-    // 发布
-    issue(name, price, des, addr, phone, unionid, nickname, starttime, endtime, imageSrc, flag) {
+    upload(name, price, des, addr, phone, uid, nickname, starttime, endtime, imageSrc, flag) {
       const that = this;
-      const unionid = wx.getStorageSync("uid");
-      const nickname = wx.getStorageSync("userInfo").nickName;
+      var uid = wx.getStorageSync("uid");
+      var nickname = wx.getStorageSync("userInfo").nickName;
       wx.request({
         url: `${service}product/addProduct`,
         method: "POST",
@@ -84,7 +193,7 @@ App({
           proDescription: des,
           proAddress: addr,
           proPhone: phone,
-          proUnionid: unionid,
+          proUnionid: uid,
           proNickname: nickname,
           proStarttime: starttime,
           proEndtime: endtime,
@@ -99,10 +208,11 @@ App({
           that.upLoadImage(imageSrc, id);
         }
       })
-    },
-
-    contribution(name, des, phone, address, flag) {
+     },
+    contribution: function(name, des, phone, address, flag) {
       const that = this;
+      var uid = wx.getStorageSync("uid");
+      var nickname = wx.getStorageSync("userInfo").nickName;
       wx.request({
         url: `${service}product/addProduct`,
         method: "POST",
@@ -126,8 +236,7 @@ App({
         }
       })
     },
-
-    upLoadImage(imageSrc, id) {
+    upLoadImage: function(imageSrc, id) {
       for (let i = 0; i < imageSrc.length; i++) {
         wx.uploadFile({
           url: `${service}product/addPhoto`,
@@ -145,5 +254,24 @@ App({
         })
       }
     }
+  },
+  //获取用户发布列表
+  getProductByUser: function (id, userNickname, cb) {
+    wx.request({
+      url: `${service}product/getProductByUser?id=${id}&userNickname=${userNickname}`,
+      success: function (res) {
+        if (cb) { cb(res.data); }
+      },
+      fail: function () {
+        wx.showToast
+          (
+          {
+            title: "获取失败！",
+            icon: 'success',
+            duration: 2000
+          }
+          )
+      }
+    })
   }
 })

@@ -27,7 +27,9 @@ Page({
     add: "add",
     donate_img: "../../images/home/donate.png",
     rent_isloadding: true,
-    donate_isloadding: true
+    donate_isloadding: true,
+    uid: 0,
+    userInfo: {}
   },
 
   /**
@@ -49,13 +51,27 @@ Page({
         donatePage: res.currentPage
       })
     })
+    app.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      })
+    })
     wx.login({
       success: function (res) {
-        console.log(res.code);
         wx.request({
           url: `https://api.weixin.qq.com/sns/jscode2session?appid=wx8a3c6a25c550566a&secret=474efe7f04d62a593205b6f0c4d1b306&js_code=${res.code}&grant_type=authorization_code`,
           success: function(res){
-            console.log(res.data.openid);
+            that.setData({
+              uid: res.data.openid
+            })
+            wx.setStorageSync("uid", that.data.uid);
+            //请求后台登陆
+            app.rent.login(that.data.uid, that.data.userInfo.nickName,function(res){
+              console.log(res);
+              wx.setStorageSync("flag",res.userFlag);
+              wx.setStorageSync("userInfo", that.data.userInfo);
+            })
           }
         })
       }
@@ -180,6 +196,12 @@ Page({
   },
   //跳转至详情页面
   toDetails: function (e) {
+    if(wx.getStorageSync("flag") == 0 ){
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
     var index = e.currentTarget.dataset.index;
     var id = this.data.rentList[index].id;
     wx.navigateTo({
@@ -188,11 +210,25 @@ Page({
   },
   //跳转至捐和租页面
   toRent: function () {
+    this.change();
+    if (wx.getStorageSync("flag") == 0) {
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
     wx.navigateTo({
       url: '../issue/issue',
     })
   },
   toDonate: function () {
+    this.change();
+    if (wx.getStorageSync("flag") == 0) {
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
     wx.navigateTo({
       url: '../contribution/contribution',
     })

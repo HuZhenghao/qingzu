@@ -35,21 +35,23 @@
   box-sizing: border-box;
   float: left;
   width: 50%;
+  height: 100rpx;
   font-size: 17px;
   font-weight: 800;
   color: #0b0b0b;
   text-align: center;
-  background: #e6e5e4;
+  border-bottom: 4px solid #fd8d37;
 }
 .donate-cur{
   box-sizing: border-box;
   float: left;
   width: 50%;
+  height: 100rpx;
   font-size: 17px;
   font-weight: 800;
   color: #0b0b0b;
   text-align: center;
-  background: #e6e5e4;
+  border-bottom: 4px solid #fd8d37;
 }
 .nav view:first-child{
   border-right: 1px solid #ccc;

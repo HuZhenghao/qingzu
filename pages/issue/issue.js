@@ -125,7 +125,7 @@ Page({
     let phone = e.detail.value.tel;
     let address = e.detail.value.addr;
     let imageSrc = this.data.image_src;
-    app.rent.issue(name, price, des, addr, phone, unionid, nickname, starttime, endtime, imageSrc, 0);
+    app.rent.upload(name, price, des, addr, phone, uid, nickname, starttime, endtime, imageSrc, 0);
     this.setData({ disableTap: true });
   }
 })

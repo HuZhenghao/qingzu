@@ -1,4 +1,5 @@
 // pages/publish/publish.js
+var app = getApp();
 Page({
 
   /**
@@ -31,7 +32,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var uid = wx.getStorageSync("uid");
+    var nickName = wx.getStorageSync("userInfo").nickName;
+    this.setData({
+      uid: uid,
+      nickName: nickName
+    })
+    app.rent.getProductByUser(uid, nickName, function(res){
+      console.log(res);
+    })
   },
 
   /**

@@ -5,6 +5,9 @@
   <view class="rec" wx:if="{{isrecognized}}">
     <image class="rec-img" src="../../images/user/check.png"></image><text>已认证</text>
   </view>
+  <view class="norec" wx:if="{{!isrecognized}}">
+    <image class="rec-img" src="../../images/user/check.png"></image><text>未认证</text>
+  </view>
 </view>
 <view class="block">
   <view class="geren">
