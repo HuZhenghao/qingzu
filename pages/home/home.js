@@ -45,7 +45,7 @@ Page({
       })
     })
     //获取捐赠列表
-    app.rent.getProductByPage(2, 1, 1, function (res) {
+    app.rent.getProductByPage(5, 1, 1, function (res) {
       that.setData({
         donateList: res.list,
         donatePage: res.currentPage
@@ -210,6 +210,7 @@ Page({
   },
   //跳转至捐和租页面
   toRent: function () {
+    this.change();
     if (wx.getStorageSync("flag") == 0) {
       wx.navigateTo({
         url: '../login/login',
@@ -221,6 +222,7 @@ Page({
     })
   },
   toDonate: function () {
+    this.change();
     if (wx.getStorageSync("flag") == 0) {
       wx.navigateTo({
         url: '../login/login',
