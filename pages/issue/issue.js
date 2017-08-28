@@ -9,7 +9,8 @@ Page({
     cycle_day: ["天", "月"],
     index:0,
     date_start:' 2017-09-01',
-    date_end: '2027-09-01'
+    date_end: '2027-09-01',
+    disableTap: false
   },
 
   /**
@@ -95,5 +96,36 @@ Page({
     this.setData({
       date_end: e.detail.value
     });
+  },
+
+
+  formSubmit(e) {
+    for (let key in e.detail.value) {
+      if (e.detail.value[key] === "") {
+        wx.showToast({
+          title: '内容不能为空',
+        });
+        return false;
+      }
+    }
+    if (this.data.image_src.length <= 0) {
+      wx.showToast({
+        title: '图片不能为空',
+      });
+      return false;
+    }
+    if (!this.data.agree) {
+      wx.showToast({
+        title: '同意使用协议',
+      });
+      return false;
+    }
+    let name = e.detail.value.title;
+    let des = e.detail.value.intro;
+    let phone = e.detail.value.tel;
+    let address = e.detail.value.addr;
+    let imageSrc = this.data.image_src;
+    app.rent.issue(name, price, des, addr, phone, unionid, nickname, starttime, endtime, imageSrc, 0);
+    this.setData({ disableTap: true });
   }
 })

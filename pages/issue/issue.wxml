@@ -37,5 +37,5 @@
     </view>
     <text>一元钱公益</text>
   </view>
-  <button class="publish">确认发布</button>
+  <button class="publish" disabled="{{disableTap}}">确认发布</button>
 </form>
