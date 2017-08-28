@@ -2,40 +2,40 @@
 <form bindsubmit="formSubmit" bindreset="formReset" class="container">
   <view class="title clearfix border">
     <text class="left">标题</text>
-    <input class="left" type="text" maxlength="15" confirm-type="done" placeholder="物品名称" />
+    <input name="title" class="left" type="text" maxlength="15" confirm-type="done" placeholder="物品名称" />
   </view>
-  <textarea class="border" placeholder="请输入物品的描述，300字以内" maxlength="300" />
+  <textarea name="intro" class="border" placeholder="请输入物品的描述，300字以内" maxlength="300" />
   <view class="add_image border">
     <image src="{{item}}" mode="scaleToFill" wx:for="{{image_src}}"></image> 
     <view class="add_btn" catchtap="addImage"></view>
   </view>
    <view class="address clearfix border">
     <text class="left">地址</text>
-    <input class="left" type="text" maxlength="20" confirm-type="done" placeholder="填入地址" />
+    <input name="addr" class="left" type="text" maxlength="20" confirm-type="done" placeholder="填入地址" />
   </view>
   <view class="tel clearfix">
     <text class="left">电话</text>
-    <input class="left" type="number" maxlength="11" confirm-type="done" placeholder="填入手机号" />
+    <input name="tel" class="left" type="number" maxlength="11" confirm-type="done" placeholder="填入手机号" />
   </view>
   <view class="price clearfix">
     <text class="left">价格</text>
-    <input class="left" type="number" maxlength="10" confirm-type="done"  />
+    <input name="price" class="left" type="number" maxlength="10" confirm-type="done"  />
     <text>元 /</text>
-    <picker class="cycle_day" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{cycle_day}}">{{cycle_day[index]}}</picker>
+    <picker name="cicleTime" class="cycle_day" mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{cycle_day}}">{{cycle_day[index]}}</picker>
   </view>
   <view class="time clearfix">
     <text class="left">可租时间</text>
-    <picker mode="date" value="{{date_start}}" start="2017-09-01" end="2027-09-01" bindchange="bindDateStartChange">{{date_start}}</picker>
+    <picker name="starttime" mode="date" value="{{date_start}}" start="2017-09-01" end="2027-09-01" bindchange="bindDateStartChange">{{date_start}}</picker>
     <text>——</text>
-    <picker mode="date" value="{{date_end}}" start="2017-09-01" end="2027-09-01" bindchange="bindDateEndChange">{{date_end}}</picker>
+    <picker name="endtime" mode="date" value="{{date_end}}" start="2017-09-01" end="2027-09-01" bindchange="bindDateEndChange">{{date_end}}</picker>
   </view>
   <view class="license_box">
     <view>
-      <checkbox id="license" checked="{{false}}" />
-      <label for="license">《租赁平台使用协议》</label>
+      <checkbox catchtap="agree" id="license" checked="{{false}}" />
+      <label catchtap="agree" for="license">《租赁平台使用协议》</label>
       <image src="/images/issue/about.png"></image>
     </view>
     <text>一元钱公益</text>
   </view>
-  <button class="publish" disabled="{{disableTap}}">确认发布</button>
+  <button form-type="submit" class="publish" disabled="{{disableTap}}">确认发布</button>
 </form>

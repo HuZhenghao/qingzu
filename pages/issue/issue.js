@@ -1,4 +1,5 @@
 // issue.js
+var app = getApp();
 Page({
 
   /**
@@ -9,8 +10,9 @@ Page({
     cycle_day: ["天", "月"],
     index:0,
     date_start:' 2017-09-01',
-    date_end: '2027-09-01',
-    disableTap: false
+    date_end: '2017-10-01',
+    disableTap: false,
+    agree: false
   },
 
   /**
@@ -69,6 +71,16 @@ Page({
   
   },
 
+  agree(e) {
+    let agree = this.data.agree;
+    if (agree) {
+      this.setData({ agree: false });
+    }
+    else {
+      this.setData({ agree: true });
+    }
+  },
+
   // 上传图片
   addImage() {
     const that = this;
@@ -100,6 +112,7 @@ Page({
 
 
   formSubmit(e) {
+    console.log(e.detail.value);
     for (let key in e.detail.value) {
       if (e.detail.value[key] === "") {
         wx.showToast({
@@ -121,11 +134,23 @@ Page({
       return false;
     }
     let name = e.detail.value.title;
+    let Preprice = e.detail.value.price;
     let des = e.detail.value.intro;
-    let phone = e.detail.value.tel;
     let address = e.detail.value.addr;
+    let phone = e.detail.value.tel;
     let imageSrc = this.data.image_src;
-    app.rent.upload(name, price, des, addr, phone, uid, nickname, starttime, endtime, imageSrc, 0);
+    let starttime = e.detail.value.starttime;
+    let endtime = e.detail.value.endtime;
+    let cicleTime = e.detail.value.cicleTime;
+    let price = "";
+    if(cicleTime === 0){
+      price = Preprice + "/天";
+    }
+    else if(cicleTime === 1){
+      price = Preprice + "/月";
+    }
+    console.log(price);
+    app.rent.upload(name, price, des, address, phone, starttime, endtime, imageSrc, 0);
     this.setData({ disableTap: true });
   }
 })

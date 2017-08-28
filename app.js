@@ -1,5 +1,6 @@
 //app.js
-var service = "http://www.whtlkj.cn/rent/"
+// var service = "http://www.whtlkj.cn/rent/"
+var service = "http://192.168.67.21:8080/rent/"
 App({
   onLaunch: function() {
   },
@@ -177,7 +178,7 @@ App({
       })
     },
 
-    upload(name, price, des, addr, phone, uid, nickname, starttime, endtime, imageSrc, flag) {
+    upload(name, price, des, addr, phone, starttime, endtime, imageSrc, flag) {
       const that = this;
       var uid = wx.getStorageSync("uid");
       var nickname = wx.getStorageSync("userInfo").nickName;
@@ -209,7 +210,7 @@ App({
         }
       })
      },
-    contribution: function(name, des, phone, address, flag) {
+    contribution(name, des, phone, address, flag) {
       const that = this;
       var uid = wx.getStorageSync("uid");
       var nickname = wx.getStorageSync("userInfo").nickName;
@@ -225,6 +226,8 @@ App({
           proPhone: phone,
           proAddress: address,
           proFlag: flag,
+          proUnionid: uid,
+          proNickname: nickname
         },
         success(res) {
           console.log(res);
@@ -236,7 +239,8 @@ App({
         }
       })
     },
-    upLoadImage: function(imageSrc, id) {
+    upLoadImage(imageSrc, id) {
+      console.log("开始",id);
       for (let i = 0; i < imageSrc.length; i++) {
         wx.uploadFile({
           url: `${service}product/addPhoto`,
@@ -247,12 +251,14 @@ App({
           },
           success: function (res) {
             //do something
+            console.log("上传中" + i,res);
             wx.navigateBack({
               delta: 1
             });
           }
         })
       }
+      console.log("结束");
     }
   },
   //获取用户发布列表
