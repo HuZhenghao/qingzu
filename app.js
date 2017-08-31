@@ -1,6 +1,6 @@
 //app.js
-// var service = "http://www.whtlkj.cn/rent/"
-var service = "http://192.168.67.21:8080/rent/"
+var service = "http://www.whtlkj.cn/rent/"
+// var service = "http://192.168.67.21:8080/rent/"
 App({
   onLaunch: function() {
   },
@@ -198,7 +198,8 @@ App({
           proNickname: nickname,
           proStarttime: starttime,
           proEndtime: endtime,
-          proFlag: flag
+          proFlag: flag,
+          proImgurl: ""
         },
         success(res) {
           console.log(res);

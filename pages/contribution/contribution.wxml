@@ -11,7 +11,7 @@
   </view>
    <view class="address clearfix border">
     <text class="left">地址</text>
-    <input name="addr" class="left" type="text" maxlength="20" confirm-type="done" placeholder="填入地址" />
+    <input name="addr" class="left" type="text" maxlength="30" confirm-type="done" placeholder="填入地址" />
   </view>
   <view class="tel clearfix">
     <text class="left">电话</text>
