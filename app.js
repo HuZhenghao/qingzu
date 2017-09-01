@@ -2,10 +2,10 @@
 var service = "http://www.whtlkj.cn/rent/"
 // var service = "http://192.168.67.21:8080/rent/"
 App({
-  onLaunch: function() {
+  onLaunch: function () {
   },
 
-  getUserInfo: function(cb) {
+  getUserInfo: function (cb) {
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
@@ -13,7 +13,7 @@ App({
       //调用登录接口
       wx.getUserInfo({
         withCredentials: false,
-        success: function(res) {
+        success: function (res) {
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
         }
@@ -26,11 +26,11 @@ App({
   },
   rent: {
     //获取商品列表
-    getProductByPage: function(pageCount, currentPage, flag, cb) {
+    getProductByPage: function (pageCount, currentPage, flag, cb) {
       wx.request({
         url: `${service}product/getProductByPage?pageCount=${pageCount}&currentPage=${currentPage}&flag=${flag}`,
         success: function (res) {
-            if (cb) { cb(res.data); }
+          if (cb) { cb(res.data); }
         },
         fail: function () {
           wx.showToast
@@ -45,7 +45,7 @@ App({
       })
     },
     //根据id获取商品
-    getProductById: function(id, cb) {
+    getProductById: function (id, cb) {
       wx.request({
         url: `${service}product/getProductById?id=${id}`,
         success: function (res) {
@@ -64,7 +64,7 @@ App({
       })
     },
     //请求后台登陆
-    login: function (id, userNickname,cb) {
+    login: function (id, userNickname, cb) {
       wx.request({
         url: `${service}user/login?id=${id}&userNickname=${userNickname}`,
         success: function (res) {
@@ -121,7 +121,7 @@ App({
       })
     },
     //收藏物品
-    addCollect: function (colUserid, colProid, cb){
+    addCollect: function (colUserid, colProid, cb) {
       wx.request({
         url: `${service}collect/addCollectByUser?colUserid=${colUserid}&colProid=${colProid}`,
         success: function (res) {
@@ -177,7 +177,25 @@ App({
         }
       })
     },
-
+    //获取用户发布列表
+    getProductByUser: function (id, userNickname, cb) {
+      wx.request({
+        url: `${service}product/getProductByUser?id=${id}&userNickname=${userNickname}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "获取失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
+    },
     upload(name, price, des, addr, phone, starttime, endtime, imageSrc, flag) {
       const that = this;
       var uid = wx.getStorageSync("uid");
@@ -267,23 +285,4 @@ App({
       console.log("结束");
     }
   },
-  //获取用户发布列表
-  getProductByUser: function (id, userNickname, cb) {
-    wx.request({
-      url: `${service}product/getProductByUser?id=${id}&userNickname=${userNickname}`,
-      success: function (res) {
-        if (cb) { cb(res.data); }
-      },
-      fail: function () {
-        wx.showToast
-          (
-          {
-            title: "获取失败！",
-            icon: 'success',
-            duration: 2000
-          }
-          )
-      }
-    })
-  }
 })
