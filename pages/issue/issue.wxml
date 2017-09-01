@@ -37,5 +37,6 @@
     </view>
     <text>一元钱公益</text>
   </view>
-  <button form-type="submit" class="publish" disabled="{{disableTap}}">确认发布</button>
+  <button wx:if="{{submit}}" class="publish" disabled="true" loading="true">正在上传商品</button>
+  <button wx:else form-type="submit" class="publish">确认发布</button>
 </form>

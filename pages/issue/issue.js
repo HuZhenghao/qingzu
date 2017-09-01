@@ -11,7 +11,7 @@ Page({
     index:0,
     date_start:' 2017-09-01',
     date_end: '2017-10-01',
-    disableTap: false,
+    submit: 0,
     agree: false
   },
 
@@ -151,6 +151,6 @@ Page({
     }
     console.log(price);
     app.rent.upload(name, price, des, address, phone, starttime, endtime, imageSrc, 0);
-    this.setData({ disableTap: true });
+    this.setData({ submit: 1 });
   }
 })

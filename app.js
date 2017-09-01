@@ -220,10 +220,6 @@ App({
           proImgurl: ""
         },
         success(res) {
-          console.log(res);
-          wx.navigateBack({
-            delta: 1
-          });
           const id = res.data.id;
           that.upLoadImage(imageSrc, id);
         }
@@ -260,6 +256,7 @@ App({
     },
     upLoadImage(imageSrc, id) {
       console.log("开始",id);
+      let imgComplete = 0;
       for (let i = 0; i < imageSrc.length; i++) {
         wx.uploadFile({
           url: `${service}product/addPhoto`,
@@ -271,13 +268,17 @@ App({
           success: function (res) {
             //do something
             console.log("上传中" + i,res);
-            if(i === imageSrc.length){
+          },
+          complete: function (res) {
+            console.log("complete",res);
+            imgComplete++;
+            if (imgComplete === imageSrc.length) {
+              console.log(imgComplete);
               setTimeout(function(){
                 wx.navigateBack({
-                  delta: 1
+                  delta: 1,
                 });
-                console.log("延迟返回");
-              },1000);
+              },500);
             }
           }
         })
