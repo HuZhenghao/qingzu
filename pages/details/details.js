@@ -102,7 +102,7 @@ Page({
     else if (that.data.starImage === "collected") {
       app.rent.delCollect(wx.getStorageSync("uid"), that.data.product.id, function (res) {
         console.log(res);
-        that.setData({ starImage: "collected" });
+        that.setData({ starImage: "no_collected" });
       })
     }
   }
