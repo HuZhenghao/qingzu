@@ -253,9 +253,14 @@ App({
           success: function (res) {
             //do something
             console.log("上传中" + i,res);
-            wx.navigateBack({
-              delta: 1
-            });
+            if(i === imageSrc.length){
+              setTimeout(function(){
+                wx.navigateBack({
+                  delta: 1
+                });
+                console.log("延迟返回");
+              },1000);
+            }
           }
         })
       }
