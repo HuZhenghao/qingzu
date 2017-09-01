@@ -1,14 +1,8 @@
 <!--details.wxml-->
 <view class="details_container">
   <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .7)" indicator-active-color="#fd8d37" autoplay="true" circular="true">
-    <swiper-item>
-      <image mode="scaleToFill" src="http://imglf2.nosdn.127.net/img/cEkvdnZURC9HZStmcGowTDhka3dkYU8zSTYremhaRmRQVzNoMlBOVS9leWN4Wk5nbEtqMjdRPT0.jpg?imageView&thumbnail=2000y1235&type=jpg&quality=96&stripmeta=0&type=jpg"></image>
-    </swiper-item>
-    <swiper-item>
-      <image mode="scaleToFill" src="http://imglf2.nosdn.127.net/img/cEkvdnZURC9HZStmcGowTDhka3dkYU8zSTYremhaRmRQVzNoMlBOVS9leWN4Wk5nbEtqMjdRPT0.jpg?imageView&thumbnail=2000y1235&type=jpg&quality=96&stripmeta=0&type=jpg"></image>
-    </swiper-item>
-    <swiper-item>
-      <image mode="scaleToFill" src="http://imglf2.nosdn.127.net/img/cEkvdnZURC9HZStmcGowTDhka3dkYU8zSTYremhaRmRQVzNoMlBOVS9leWN4Wk5nbEtqMjdRPT0.jpg?imageView&thumbnail=2000y1235&type=jpg&quality=96&stripmeta=0&type=jpg"></image>
+    <swiper-item wx:for="{{image}}">
+      <image mode="scaleToFill" src="http://www.whtlkj.cn/rent/{{item}}"></image>
     </swiper-item>
   </swiper>
   <view class="master_info">
@@ -20,7 +14,7 @@
     </view>
   </view>
   <view class="intro_info color70">
-  <view class="time">可租时间：{{product.proStartTime}}~{{product.proEndTime}}</view>
+  <view class="time">可租时间：{{product.proStarttime}}~{{product.proEndtime}}</view>
     <text>简介：</text>
     <text>{{product.proDescription}}</text>
   </view>

@@ -8,7 +8,8 @@ Page({
   data: {
     product: {},
     starImage: "no_collected",
-    messageImage: "message"
+    messageImage: "message",
+    image:[]
   },
 
   /**
@@ -21,6 +22,9 @@ Page({
       that.setData({
         product: res
       })
+      let imgArr = that.data.product.proImgurl.split("|");
+      imgArr.pop();
+      that.setData({image: imgArr});
       app.rent.getCollectState(wx.getStorageSync("uid"), that.data.product.id, function (res) {
         console.log(res)
         if (res.errCode == 0) {
@@ -33,7 +37,8 @@ Page({
           })
         }
       })
-    })
+    });
+
   },
 
   /**
@@ -97,7 +102,7 @@ Page({
     else if (that.data.starImage === "collected") {
       app.rent.delCollect(wx.getStorageSync("uid"), that.data.product.id, function (res) {
         console.log(res);
-        that.setData({ starImage: "collected" });
+        that.setData({ starImage: "no_collected" });
       })
     }
   }

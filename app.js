@@ -1,5 +1,6 @@
 //app.js
 var service = "http://www.whtlkj.cn/rent/"
+// var service = "http://192.168.67.21:8080/rent/"
 App({
   onLaunch: function () {
   },
@@ -194,6 +195,89 @@ App({
             )
         }
       })
+    },
+    upload(name, price, des, addr, phone, starttime, endtime, imageSrc, flag) {
+      const that = this;
+      var uid = wx.getStorageSync("uid");
+      var nickname = wx.getStorageSync("userInfo").nickName;
+      wx.request({
+        url: `${service}product/addProduct`,
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          proName: name,
+          proPrice: price,
+          proDescription: des,
+          proAddress: addr,
+          proPhone: phone,
+          proUnionid: uid,
+          proNickname: nickname,
+          proStarttime: starttime,
+          proEndtime: endtime,
+          proFlag: flag,
+          proImgurl: ""
+        },
+        success(res) {
+          console.log(res);
+          wx.navigateBack({
+            delta: 1
+          });
+          const id = res.data.id;
+          that.upLoadImage(imageSrc, id);
+        }
+      })
+     },
+    contribution(name, des, phone, address, flag) {
+      const that = this;
+      var uid = wx.getStorageSync("uid");
+      var nickname = wx.getStorageSync("userInfo").nickName;
+      wx.request({
+        url: `${service}product/addProduct`,
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          proName: name,
+          proDescription: des,
+          proPhone: phone,
+          proAddress: address,
+          proFlag: flag,
+          proUnionid: uid,
+          proNickname: nickname
+        },
+        success(res) {
+          console.log(res);
+          wx.navigateBack({
+            delta: 1
+          });
+          const id = res.data.id;
+          that.upLoadImage(imageSrc, id);
+        }
+      })
+    },
+    upLoadImage(imageSrc, id) {
+      console.log("开始",id);
+      for (let i = 0; i < imageSrc.length; i++) {
+        wx.uploadFile({
+          url: `${service}product/addPhoto`,
+          filePath: imageSrc[i],
+          name: 'image',
+          formData: {
+            'id': id
+          },
+          success: function (res) {
+            //do something
+            console.log("上传中" + i,res);
+            wx.navigateBack({
+              delta: 1
+            });
+          }
+        })
+      }
+      console.log("结束");
     }
   },
 })

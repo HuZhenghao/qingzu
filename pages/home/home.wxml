@@ -13,7 +13,7 @@
 </view>
 <view wx:if="{{rent_show}}" wx:for="{{rentList}}" data-index="{{index}}" wx:key="index" bindtap="toDetails">
   <view class="good">
-    <image src="{{item.img}}" class="good-img"></image>
+    <image src="http://www.whtlkj.cn/rent/{{item.proImgurl}}" class="good-img"></image>
     <view class="text">
       <view class="title">{{item.proName}}<text class="price">{{item.proPrice}}</text></view>
       <view class="intro">{{item.proDescription}}</view>
