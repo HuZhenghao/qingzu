@@ -144,10 +144,10 @@ Page({
     let cicleTime = e.detail.value.cicleTime;
     let price = "";
     if(cicleTime === 0){
-      price = Preprice + "/天";
+      price = Preprice + "元/天";
     }
     else if(cicleTime === 1){
-      price = Preprice + "/月";
+      price = Preprice + "元/月";
     }
     console.log(price);
     app.rent.upload(name, price, des, address, phone, starttime, endtime, imageSrc, 0);
