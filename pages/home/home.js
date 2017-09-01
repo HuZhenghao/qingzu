@@ -37,26 +37,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    //获取出租列表
-    app.rent.getProductByPage(5, 1, 0, function (res) {
-      for (let item of res.list) {
-        var img = item.proImgurl.split("|")[0];
-        item.proImgurl = img;
-      }
-      console.log(res.list);
-      that.setData({
-        rentList: res.list,
-        rentPage: res.currentPage
-      })
-    })
-    //获取捐赠列表
-
-    app.rent.getProductByPage(5, 1, 1, function (res) {
-      that.setData({
-        donateList: res.list,
-        donatePage: res.currentPage
-      })
-    })
     app.getUserInfo(function (userInfo) {
       //更新数据
       that.setData({
@@ -95,7 +75,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    //获取出租列表
+    app.rent.getProductByPage(5, 1, 0, function (res) {
+      for (let item of res.list) {
+        var img = item.proImgurl.split("|")[0];
+        item.proImgurl = img;
+      }
+      that.setData({
+        rentList: res.list,
+        rentPage: res.currentPage
+      })
+    })
+    //获取捐赠列表
 
+    app.rent.getProductByPage(5, 1, 1, function (res) {
+      that.setData({
+        donateList: res.list,
+        donatePage: res.currentPage
+      })
+    })
   },
 
   /**
