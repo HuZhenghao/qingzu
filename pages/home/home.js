@@ -132,6 +132,10 @@ Page({
             rent_isloadding: false
           })
         }
+        for (let item of res.list) {
+          var img = item.proImgurl.split("|")[0];
+          item.proImgurl = img;
+        }
         var list = that.data.rentList;
         for (var num in res.list) {
           list.push(res.list[num])
