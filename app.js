@@ -1,5 +1,5 @@
 //app.js
-var service = "http://www.whtlkj.cn/rent/"
+var service = "https://www.whtlkj.cn/rent/"
 // var service = "http://192.168.67.21:8080/rent/"
 App({
   onLaunch: function () {

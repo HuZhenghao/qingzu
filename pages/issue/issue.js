@@ -12,7 +12,10 @@ Page({
     date_start:' 2017-09-01',
     date_end: '2017-10-01',
     submit: 0,
-    agree: false
+    agree: false,
+    price_focus: false,
+    tel_focus: false,
+    intro_focus:false,
   },
 
   /**

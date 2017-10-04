@@ -2,8 +2,8 @@
 <view class="main-container">
   <view class="title">欢迎使用轻租</view>
   <view class="input-box">
-    <input type="number" placeholder="学号" bindinput="numInput"/>
-    <input password placeholder="密码（登录教务处时的密码）" bindinput="keyInput"/>
+    <input focus="true" type="number" placeholder="学号" bindinput="numInput"/>
+    <input password="true" placeholder="密码（登录教务处时的密码）" bindinput="keyInput"/>
   </view>
   <view class="button" bindtap="rec">认证</view>
 </view>
