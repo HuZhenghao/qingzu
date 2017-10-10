@@ -46,7 +46,7 @@ Page({
     wx.login({
       success: function (res) {
         wx.request({
-          url: `https://api.weixin.qq.com/sns/jscode2session?appid=wx8a3c6a25c550566a&secret=474efe7f04d62a593205b6f0c4d1b306&js_code=${res.code}&grant_type=authorization_code`,
+          url: `https://www.whtlkj.cn/rent/user/getInfo?appid=wx8a3c6a25c550566a&secret=474efe7f04d62a593205b6f0c4d1b306&js_code=123456789&grant_type=1`,
           success: function(res){
             that.setData({
               uid: res.data.openid

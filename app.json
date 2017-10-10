@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/details/details",
     "pages/home/home",
     "pages/issue/issue",
     "pages/login/login",
     "pages/publish/publish",
-    "pages/details/details",
     "pages/user/user",
     "pages/index/index",
     "pages/contribution/contribution",

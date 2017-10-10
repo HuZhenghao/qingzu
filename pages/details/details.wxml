@@ -10,27 +10,37 @@
       <text class="color70">物主ID：{{product.proNickname}}</text>
     </view>
     <view class="price_info left">
-      <text  class="color70">价格：<text>{{product.proPrice}}</text></text>
+      <text class="color70">价格：<text>{{product.proPrice}}</text></text>
     </view>
   </view>
   <view class="intro_info color70">
-  <view class="time">可租时间：{{product.proStarttime}}~{{product.proEndtime}}</view>
+    <view class="time">可租时间：{{product.proStarttime}}~{{product.proEndtime}}</view>
     <text>简介：</text>
     <text>{{product.proDescription}}</text>
   </view>
   <view class="message color70">
     <text>留言：</text>
-    <text>吴彦祖：类似失守后寿司和觉得苦苦思考思考法律开始就爱上了发话了安徽</text>
+    <text>{{product.proNickname}}：类似失守后寿司和觉得苦苦思考思考法律开始就爱上了发话了安徽</text>
   </view>
   <view class="footer">
     <view class="star left flex_column" catchtap="productCollected">
       <image src="/images/details/{{starImage}}.png"></image>
       <text class="color70">收藏</text>
     </view>
-    <view class="give_message left flex_column">
+    <view class="give_message left flex_column" catchtap='showMessageBox'>
       <image src="/images/details/{{messageImage}}.png"></image>
       <text class="color70">留言</text>
     </view>
-    <view class="contacting left"><text>联系物主</text></view>
+    <view class="contacting left">
+      <text>联系物主</text>
+    </view>
   </view>
+  <block wx:if="{{saying}}">
+    <view class='mask'></view>
+    <view class='message_box'>
+      <textarea class='text' fixed='true' focus='true' placeholder='请输入留言' bindblur='getMessage'></textarea>
+      <view class='cancel' catchtap='showMessageBox'>取消</view>
+      <view class='commit' >提交</view>
+    </view>
+  </block>
 </view>

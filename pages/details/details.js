@@ -9,7 +9,8 @@ Page({
     product: {},
     starImage: "no_collected",
     messageImage: "message",
-    image:[]
+    image:[],
+    saying: false
   },
 
   /**
@@ -105,5 +106,19 @@ Page({
         that.setData({ starImage: "no_collected" });
       })
     }
+  },
+
+  // 留言弹窗
+  showMessageBox(){
+    if(this.data.saying){
+      this.setData({ saying: false });
+    }
+    else{
+      this.setData({ saying: true });
+    }
+  },
+
+  getMessage(event) {
+    console.log(event.detail.value);
   }
 })
