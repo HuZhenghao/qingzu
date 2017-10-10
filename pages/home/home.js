@@ -205,12 +205,12 @@ Page({
   },
   //跳转至详情页面
   toDetails: function (e) {
-    if(wx.getStorageSync("flag") == 0 ){
-      wx.navigateTo({
-        url: '../login/login',
-      })
-      return false;
-    }
+    // if(wx.getStorageSync("flag") == 0 ){
+    //   wx.navigateTo({
+    //     url: '../login/login',
+    //   })
+    //   return false;
+    // }
     var index = e.currentTarget.dataset.index;
     var id = this.data.rentList[index].id;
     wx.navigateTo({
