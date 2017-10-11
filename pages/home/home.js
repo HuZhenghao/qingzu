@@ -45,7 +45,6 @@ Page({
     })
     wx.login({
       success: function (res) {
-        console.log(res);
         wx.request({
           url: `https://www.whtlkj.cn/rent/user/getInfo?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
           // url: `https://api.weixin.qq.com/sns/jscode2session?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
@@ -56,14 +55,12 @@ Page({
             grant_type: authorization_code
           }, */
           success: function(res){
-            console.log(res);
             that.setData({
               uid: res.data.openid
             })
             wx.setStorageSync("uid", that.data.uid);
             //请求后台登陆
             app.rent.login(that.data.uid, that.data.userInfo.nickName,function(res){
-              console.log(res);
               wx.setStorageSync("flag",res.userFlag);
               wx.setStorageSync("userInfo", that.data.userInfo);
             })
@@ -135,7 +132,6 @@ Page({
     if (that.data.rent_show) {
       if (!that.data.rent_isloadding) { return false }
       app.rent.getProductByPage(5, that.data.rentPage + 1, 0, function (res) {
-        console.log(res.list.length);
         if (res.list.length < 5) {
           that.setData({
             rent_isloadding: false
@@ -158,7 +154,6 @@ Page({
     else {
       if (!that.data.donate_isloadding) { return false }
       app.rent.getProductByPage(5, that.data.donatePage + 1, 1, function (res) {
-        console.log(res.list.length);
         if (res.list.length < 5) {
           that.setData({
             donate_isloadding: false

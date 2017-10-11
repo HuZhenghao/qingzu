@@ -115,7 +115,6 @@ Page({
 
 
   formSubmit(e) {
-    console.log(e.detail.value);
     for (let key in e.detail.value) {
       if (e.detail.value[key] === "") {
         wx.showToast({
@@ -152,7 +151,6 @@ Page({
     else if(cicleTime === 1){
       price = Preprice + "元/月";
     }
-    console.log(price);
     app.rent.upload(name, price, des, address, phone, starttime, endtime, imageSrc, 0);
     this.setData({ submit: 1 });
   }

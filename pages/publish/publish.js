@@ -28,7 +28,6 @@ Page({
     });
     app.rent.getProductByUser(uid, nickName, function(res){
       res.forEach(function(element){
-        console.log(element);
         if (element.proFlag === '0'){
           rentlist.push(element);
         }

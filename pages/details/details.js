@@ -22,7 +22,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     app.rent.getProductById(options.id, function (res) {
-      console.log(res);
       that.setData({
         product: res
       })
@@ -30,7 +29,6 @@ Page({
       imgArr.pop();
       that.setData({image: imgArr});
       app.rent.getCollectState(wx.getStorageSync("uid"), that.data.product.id, function (res) {
-        console.log(res)
         if (res.errCode == 0) {
           that.setData({
             starImage: "collected",
@@ -100,13 +98,11 @@ Page({
     const that = this;
     if (that.data.starImage === "no_collected") {
       app.rent.addCollect(wx.getStorageSync("uid"), that.data.product.id, function (res) {
-        console.log(res);
         that.setData({ starImage: "collected" });
       })
     }
     else if (that.data.starImage === "collected") {
       app.rent.delCollect(wx.getStorageSync("uid"), that.data.product.id, function (res) {
-        console.log(res);
         that.setData({ starImage: "no_collected" });
       })
     }
@@ -146,7 +142,6 @@ Page({
     let that = this;
     let proId = this.data.product.id;
     app.rent.getMessage(proId, function (res) {
-      console.log(res);
       that.setData({message: res.data});
     })
   },
