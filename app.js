@@ -250,7 +250,6 @@ App({
           proNickname: nickname
         },
         success(res) {
-          console.log(res);
           wx.navigateBack({
             delta: 1
           });
@@ -260,7 +259,6 @@ App({
       })
     },
     upLoadImage(imageSrc, id) {
-      console.log("开始",id);
       let imgComplete = 0;
       for (let i = 0; i < imageSrc.length; i++) {
         wx.uploadFile({
@@ -272,13 +270,10 @@ App({
           },
           success: function (res) {
             //do something
-            console.log("上传中" + i,res);
           },
           complete: function (res) {
-            console.log("complete",res);
             imgComplete++;
             if (imgComplete === imageSrc.length) {
-              console.log(imgComplete);
               setTimeout(function(){
                 wx.navigateBack({
                   delta: 1,
@@ -288,12 +283,12 @@ App({
           }
         })
       }
-      console.log("结束");
     },
 
     // 留言
     giveMessage(proId, messageText, mesTo, cb){
       var uid = wx.getStorageSync("uid");
+      console.log(uid);
       wx.request({
         url: `${service}message/addMessage`,
         data:{
