@@ -6,24 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rentList: [{
-      img: "../../images/home/good.png",
-      proName: "标题1",
-      proPrice: "50元/天",
-      proDescription: "物品介绍",
-      cur_right: 0
-    }, {
-      img: "../../images/home/good.png",
-      proName: "标题2",
-      proPrice: "50元/天",
-      proDescription: "物品介绍",
-      cur_right: 0
-    }],
-    donateList: [{
-      proName: "标题3",
-      proDescription: "物品介绍",
-      cur_right: 0
-    }],
+
+    rentList: [],
+    donateList: [],
     donate_img: "../../images/home/donate.png",
     startX: 0
   },
@@ -35,13 +20,24 @@ Page({
     var that = this;
     var uid = wx.getStorageSync("uid");
     var nickName = wx.getStorageSync("userInfo").nickName;
+    let rentlist = [];
+    let donatelist = [];
     this.setData({
       uid: uid,
       nickName: nickName
-    })
+    });
     app.rent.getProductByUser(uid, nickName, function(res){
-      console.log(res);
-    })
+      res.forEach(function(element){
+        console.log(element);
+        if (element.proFlag === '0'){
+          rentlist.push(element);
+        }
+        else if (element.proFlag == '1'){
+          donatelist.push(element);
+        }
+      });
+      that.setData({rentList: rentlist, donateList: donatelist});
+    });
   },
 
   /**
