@@ -29,7 +29,7 @@ Page({
     rent_isloadding: true,
     donate_isloadding: true,
     uid: 0,
-    userInfo: {}
+    userInfo: {},
   },
 
   /**
