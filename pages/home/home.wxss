@@ -82,7 +82,7 @@
   height: 50rpx;
   line-height: 50rpx;
   font-size: 17px;
-  color: #000;
+  color: #000;  
   font-weight: 800;
 }
 .price{

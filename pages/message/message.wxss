@@ -1,0 +1,8 @@
+/* message.wxss */
+.message{
+  margin: 20rpx 20rpx 0 20px;
+  font-size: 14px;
+  line-height: 22px;
+  word-break: break-all;
+  background-color: #eee;
+}

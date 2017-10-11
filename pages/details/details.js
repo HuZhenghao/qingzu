@@ -10,7 +10,10 @@ Page({
     starImage: "no_collected",
     messageImage: "message",
     image:[],
-    saying: false
+    saying: false,
+    messageText: "",
+    message: [],
+    mesTo: ""
   },
 
   /**
@@ -37,6 +40,7 @@ Page({
             starImage: "no_collected",
           })
         }
+        that.getProMessage();
       })
     });
 
@@ -109,7 +113,8 @@ Page({
   },
 
   // 留言弹窗
-  showMessageBox(){
+  showMessageBox(event){
+    this.data.mesTo = event.currentTarget.dataset.mesToId || "";
     if(this.data.saying){
       this.setData({ saying: false });
     }
@@ -117,8 +122,40 @@ Page({
       this.setData({ saying: true });
     }
   },
-
+  // 记录留言
+  saveMessage(event) {
+    this.data.messageText = event.detail.value;
+  },
   getMessage(event) {
-    console.log(event.detail.value);
+    let that = this;
+    let proId = this.data.product.id;
+    let messageText = this.data.messageText;
+    let mesTo = this.data.mesTo;
+    if(messageText.length > 0){
+      app.rent.giveMessage(proId, messageText, mesTo, function (res) {
+        that.getProMessage();
+        that.setData({ saying: false, messageText:"" });
+      });
+    }
+    else{
+      that.setData({ saying: false });
+    }
+  },
+
+  getProMessage() {
+    let that = this;
+    let proId = this.data.product.id;
+    app.rent.getMessage(proId, function (res) {
+      console.log(res);
+      that.setData({message: res.data});
+    })
+  },
+
+
+  call(){
+    let that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.product.proPhone
+    });
   }
 })

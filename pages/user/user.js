@@ -104,5 +104,17 @@ Page({
     wx.navigateTo({
       url: '../collect/collect',
     })
+  },
+  
+  toMessage() {
+    if (wx.getStorageSync("flag") == 0) {
+      wx.navigateTo({
+        url: '../login/login',
+      })
+      return false;
+    }
+    wx.navigateTo({
+      url: '../message/message',
+    })
   }
 })

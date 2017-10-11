@@ -83,7 +83,7 @@ App({
       })
     },
     //验证教务处
-    check: function (id, userNickname, username, password, cb) {
+    /* check: function (id, userNickname, username, password, cb) {
       wx.request({
         url: `${service}user/check?id=${id}&userNickname=${userNickname}&username=${username}&password=${password}`,
         success: function (res) {
@@ -100,7 +100,12 @@ App({
             )
         }
       })
+    }, */
+    check(id, userNickname, username, password, cb){
+      let res = {errCode: 0};
+      cb(res)
     },
+
     //获取收藏状态
     getCollectState: function (colUserid, colProid, cb) {
       wx.request({
@@ -284,6 +289,50 @@ App({
         })
       }
       console.log("结束");
+    },
+
+    // 留言
+    giveMessage(proId, messageText, mesTo, cb){
+      var uid = wx.getStorageSync("uid");
+      wx.request({
+        url: `${service}message/addMessage`,
+        data:{
+          mesProid:proId,
+          mesContent: messageText,
+          mesFrom:uid,
+          mesTo: mesTo
+        },
+        success(res){
+          cb(res);
+        }
+      })
+    },
+
+    // 获取商品留言
+    getMessage(productId, cb) {
+      wx.request({
+        url: `${service}message/getMessageByProduct`,
+        data: {
+          id: productId
+        },
+        success(res) {
+          cb(res);
+        }
+      })
+    },
+
+    // 获取用户留言
+    getUserMessage(cb) {
+      var uid = wx.getStorageSync("uid");
+      wx.request({
+        url: `${service}message/getMessageByUser`,
+        data: {
+          id: uid
+        },
+        success(res) {
+          cb(res);
+        }
+      })
     }
-  },
+  }
 })

@@ -1,0 +1,2 @@
+<!--message.wxml-->
+<view class="message" wx:for="{{message}}">{{item.mesFrom}}：{{item.mesContent}}</view>

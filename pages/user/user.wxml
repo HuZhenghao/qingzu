@@ -22,7 +22,7 @@
     <image class="shoucang-img" src="../../images/user/shoucang.png"></image>
     <view class="block-text">我的收藏</view>
   </view>
-  <view class="xiaoxi">
+  <view class="xiaoxi" catchtap="toMessage">
     <image class="xiaoxi-img" src="../../images/user/xiaoxi.png"></image>
     <view class="block-text">我的消息</view>
   </view>
