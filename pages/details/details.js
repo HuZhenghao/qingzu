@@ -28,6 +28,7 @@ Page({
       let imgArr = that.data.product.proImgurl.split("|");
       imgArr.pop();
       that.setData({image: imgArr});
+      that.getProMessage();
       app.rent.getCollectState(wx.getStorageSync("uid"), that.data.product.id, function (res) {
         if (res.errCode == 0) {
           that.setData({
@@ -38,10 +39,8 @@ Page({
             starImage: "no_collected",
           })
         }
-        that.getProMessage();
       })
     });
-
   },
 
   /**

@@ -13,7 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.showMessage();
+    let that = this;
+    app.rent.getUserMessage(function (res) {
+      that.setData({ message: res.data });
+    });
   },
 
   /**
@@ -63,12 +66,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  showMessage() {
-    let that = this;
-    app.rent.getUserMessage(function (res) {
-      that.setData({message:res.data});
-    });
   }
 })
