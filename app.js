@@ -3,6 +3,33 @@ var service = "https://www.whtlkj.cn/rent/"
 // var service = "http://192.168.67.21:8080/rent/"
 App({
   onLaunch: function () {
+    var that = this;
+    this.getUserInfo(function (userInfo) {
+      //更新数据
+      that.setData({
+        userInfo: userInfo
+      });
+      if (!wx.getStorageSync("uid")) {
+        wx.login({
+          success: function (res) {
+            wx.request({
+              url: `https://www.whtlkj.cn/rent/user/getInfo?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
+              success: function (res) {
+                that.setData({
+                  uid: res.data.openid
+                })
+                wx.setStorageSync("uid", that.data.uid);
+                //请求后台登陆
+                app.rent.login(that.data.uid, that.data.userInfo.nickName, function (res) {
+                  wx.setStorageSync("flag", res.userFlag);
+                  wx.setStorageSync("userInfo", that.data.userInfo);
+                })
+              }
+            });
+          }
+        });
+      }
+    });
   },
 
   getUserInfo: function (cb) {

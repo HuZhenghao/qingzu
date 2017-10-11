@@ -36,40 +36,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      });
-      if(!wx.getStorageSync("uid")){
-        wx.login({
-          success: function (res) {
-            wx.request({
-              url: `https://www.whtlkj.cn/rent/user/getInfo?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
-              // url: `https://api.weixin.qq.com/sns/jscode2session?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
-              /* data:{
-                appid: wxe27040be939f6364,
-                secret: c0cb4ba401961f12a8ce4308b9001e76,
-                js_code: res.code,
-                grant_type: authorization_code
-              }, */
-              success: function (res) {
-                that.setData({
-                  uid: res.data.openid
-                })
-                wx.setStorageSync("uid", that.data.uid);
-                //请求后台登陆
-                app.rent.login(that.data.uid, that.data.userInfo.nickName, function (res) {
-                  wx.setStorageSync("flag", res.userFlag);
-                  wx.setStorageSync("userInfo", that.data.userInfo);
-                })
-              }
-            });
-          }
-        });
-      }
-    })
+    var userInfo = wx.getStorageSync("userInfo");
+    var uid = wx.getStorageSync("uid");
+    this.setData({uid:uid,userInfo:userInfo});
   },
 
   /**
