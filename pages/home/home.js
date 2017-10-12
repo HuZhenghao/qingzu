@@ -36,9 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = wx.getStorageSync("userInfo");
-    var uid = wx.getStorageSync("uid");
-    this.setData({uid:uid,userInfo:userInfo});
+    this.getUserData();
   },
 
   /**
@@ -47,6 +45,28 @@ Page({
   onReady: function () {
 
   },
+
+
+
+  getUserData: function () {
+    let that = this;
+    if (wx.getStorageSync("uid")) {
+      var uid = wx.getStorageSync("uid");
+      this.setData({ uid: uid});
+      if (wx.getStorageSync("userInfo")){
+        var userInfo = wx.getStorageSync("userInfo");
+        that.setData({userInfo: userInfo});
+      }
+      else{
+        setTimeout(this.getUserData, 500);
+      }
+    }
+    else {
+      setTimeout(this.getUserData, 500);
+    }
+
+  },
+
 
   /**
    * 生命周期函数--监听页面显示

@@ -10,7 +10,8 @@ App({
         wx.login({
           success: function (res) {
             wx.request({
-              url: `https://www.whtlkj.cn/rent/user/getInfo?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
+              // url: `https://www.whtlkj.cn/rent/user/getInfo?appid=wxe27040be939f6364&secret=c0cb4ba401961f12a8ce4308b9001e76&js_code=${res.code}&grant_type=authorization_code`,
+              url: `http://www.whtlkj.cn/rent/user/getInfo?js_code=${res.code}`,
               success: function (res) {
                 console.log(res);
                 var uid = res.data.openid

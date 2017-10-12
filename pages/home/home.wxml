@@ -11,6 +11,8 @@
   <view class="rent-{{rent}}" bindtap="rent">出租</view>
   <view class="donate-{{donate}}" bindtap="donate">捐赠</view>
 </view>
+   <view class="test">{{userInfo.nickName}}</view>
+  <view class="uid">{{uid}}</view> 
 <view wx:if="{{rent_show}}" wx:for="{{rentList}}" data-index="{{index}}" wx:key="index" bindtap="toDetails">
   <view class="good">
     <image src="http://www.whtlkj.cn/rent/{{item.proImgurl}}" class="good-img"></image>
