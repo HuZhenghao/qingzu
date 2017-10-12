@@ -98,11 +98,11 @@ Page({
     var flag = e.currentTarget.dataset.flag;
     var curX = e.touches[0].clientX;
     var move = this.data.startX - curX;
-    if (move > 80) { move = 80 }
+    if (move > 100) { move = 100 }
     if (move < 0) { move = 0 }
     if (flag == 0) {
       var list = this.data.rentList;
-      if (list[index].cur_right == 80 && move > 0) {
+      if (list[index].cur_right == 100 && move > 0) {
         return false;
       }
       list[index].cur_right = move;
@@ -111,7 +111,7 @@ Page({
       })
     } else {
       var list = this.data.donateList;
-      if (list[index].cur_right == 80 && move > 0) {
+      if (list[index].cur_right == 100 && move > 0) {
         return false;
       }
       list[index].cur_right = move;
@@ -124,22 +124,22 @@ Page({
     var index = e.currentTarget.dataset.index;
     var flag = e.currentTarget.dataset.flag;
     var end = e.changedTouches[0].clientX;
-    if (((this.data.startX - end) > 40) || ((this.data.startX - end) == 40)) {
+    if (((this.data.startX - end) > 50) || ((this.data.startX - end) == 50)) {
       if (flag == 0) {
         var list = this.data.rentList;
-        list[index].cur_right = 80;
+        list[index].cur_right = 100;
         this.setData({
           rentList: list
         })
       } else {
         var list = this.data.donateList;
-        list[index].cur_right = 80;
+        list[index].cur_right = 100;
         this.setData({
           donateList: list
         })
       }
     }
-    if ((this.data.startX - end) < 40) {
+    if ((this.data.startX - end) < 50) {
       if (flag == 0) {
         var list = this.data.rentList;
         list[index].cur_right = 0;

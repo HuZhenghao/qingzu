@@ -67,19 +67,23 @@ swiper-item image{
 .message{
   padding: 16px 4%;
 }
-.message text:first-of-type{
+.mes_title{
   display: block;
   font-size: 16px;
 }
-.message view{
+.mes_content{
   margin: 10rpx 0 0 16px;
   font-size: 14px;
   line-height: 22px;
-  word-break: break-all;
+  word-break: break-all; 
   background-color: #eee;
 }
 .message view:last-of-type{
   margin-bottom: 100rpx;
+}
+.mes_from,
+.mes_to{
+  color: #fd8d37;
 }
 
 .footer{

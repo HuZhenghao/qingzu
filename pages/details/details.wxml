@@ -19,8 +19,8 @@
     <text>{{product.proDescription}}</text>
   </view>
   <view class="message color70">
-    <text>留言：</text>
-    <view catchtap="showMessageBox" wx:for="{{message}}" data-mes-to-id="{{item.mesFrom}}">{{item.mesFrom}}：{{item.mesContent}}</view>
+    <view class="mes_title">留言：</view>
+    <view class="mes_content" catchtap="showMessageBox" wx:for="{{message}}" wx:for-item="message" data-mes-to-id="{{product.proUnionid}}"><text class="mes_from">{{message.mesFrom}}</text><text wx:if="{{message.mesTo.length > 0}}"> 回复 </text><text class="mes_to">{{message.mesTo}}</text><text>：{{message.mesContent}}</text></view>
   </view>
   <view class="footer">
     <view class="star left flex_column" catchtap="productCollected">

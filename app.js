@@ -352,6 +352,26 @@ App({
           cb(res);
         }
       })
+    },
+
+    //删除物品
+    deleteProductByUser: function (id, cb){
+      wx.request({
+        url: `${service}product/deleteProductByUser?id=${id}`,
+        success: function (res) {
+          if (cb) { cb(res.data); }
+        },
+        fail: function () {
+          wx.showToast
+            (
+            {
+              title: "删除失败！",
+              icon: 'success',
+              duration: 2000
+            }
+            )
+        }
+      })
     }
   }
 })

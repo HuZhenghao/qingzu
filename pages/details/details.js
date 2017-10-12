@@ -13,7 +13,7 @@ Page({
     saying: false,
     messageText: "",
     message: [],
-    mesTo: ""
+    nodouble: true
   },
 
   /**
@@ -122,6 +122,10 @@ Page({
     this.data.messageText = event.detail.value;
   },
   getMessage(event) {
+    if (!this.data.nodouble) {
+      return false;
+    }
+    this.data.nodouble = false;
     let that = this;
     let proId = this.data.product.id;
     let messageText = this.data.messageText;
@@ -130,10 +134,12 @@ Page({
       app.rent.giveMessage(proId, messageText, mesTo, function (res) {
         that.getProMessage();
         that.setData({ saying: false, messageText:"" });
+        that.data.nodouble = true;
       });
     }
     else{
       that.setData({ saying: false });
+      that.data.nodouble = true;
     }
   },
 

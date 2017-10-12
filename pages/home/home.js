@@ -8,8 +8,7 @@ Page({
   data: {
     imgUrls: [
       '../../images/home/banner.png',
-      '../../images/home/banner.png',
-      '../../images/home/banner.png'
+      '../../images/home/banner1.png'
     ],
     indicatorDots: true,
     autoplay: true,

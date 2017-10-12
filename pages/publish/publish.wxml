@@ -8,7 +8,7 @@
         <view class="intro">{{item.proDescription}}</view>
       </view>
     </view>
-    <view class="delete" data-flag="0" data-index="{{index}}" catchtap="delete" style="right:{{item.cur_right - 80}}rpx">删除</view>
+    <view class="delete" data-flag="0" data-index="{{index}}" catchtap="delete" style="right:{{item.cur_right - 100}}rpx">删除</view>
   </view>
 </view>
 <view wx:for="{{donateList}}" wx:key="index">
@@ -20,6 +20,6 @@
         <view class="intro">{{item.proDescription}}</view>
       </view>
     </view>
-    <view class="delete" data-flag="1" data-index="{{index}}" catchtap="delete" style="right:{{item.cur_right - 80}}rpx">删除</view>
+    <view class="delete" data-flag="1" data-index="{{index}}" catchtap="delete" style="right:{{item.cur_right - 100}}rpx">删除</view>
   </view>
 </view>

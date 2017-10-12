@@ -26,16 +26,16 @@ Page({
       uid: uid,
       nickName: nickName
     });
-    app.rent.getProductByUser(uid, nickName, function(res){
-      res.forEach(function(element){
-        if (element.proFlag === '0'){
+    app.rent.getProductByUser(uid, nickName, function (res) {
+      res.forEach(function (element) {
+        if (element.proFlag === '0') {
           rentlist.push(element);
         }
-        else if (element.proFlag == '1'){
+        else if (element.proFlag == '1') {
           donatelist.push(element);
         }
       });
-      that.setData({rentList: rentlist, donateList: donatelist});
+      that.setData({ rentList: rentlist, donateList: donatelist });
     });
   },
 
@@ -118,11 +118,11 @@ Page({
     var flag = e.currentTarget.dataset.flag;
     var curX = e.touches[0].clientX;
     var move = this.data.startX - curX;
-    if (move > 80) { move = 80 }
+    if (move > 100) { move = 100 }
     if (move < 0) { move = 0 }
     if (flag == 0) {
       var list = this.data.rentList;
-      if (list[index].cur_right == 80 && move > 0) {
+      if (list[index].cur_right == 100 && move > 0) {
         return false;
       }
       list[index].cur_right = move;
@@ -131,7 +131,7 @@ Page({
       })
     } else {
       var list = this.data.donateList;
-      if (list[index].cur_right == 80 && move > 0) {
+      if (list[index].cur_right == 100 && move > 0) {
         return false;
       }
       list[index].cur_right = move;
@@ -144,22 +144,22 @@ Page({
     var index = e.currentTarget.dataset.index;
     var flag = e.currentTarget.dataset.flag;
     var end = e.changedTouches[0].clientX;
-    if (((this.data.startX - end) > 40) || ((this.data.startX - end) == 40)) {
+    if (((this.data.startX - end) > 50) || ((this.data.startX - end) == 50)) {
       if (flag == 0) {
         var list = this.data.rentList;
-        list[index].cur_right = 80;
+        list[index].cur_right = 100;
         this.setData({
           rentList: list
         })
       } else {
         var list = this.data.donateList;
-        list[index].cur_right = 80;
+        list[index].cur_right = 100;
         this.setData({
           donateList: list
         })
       }
     }
-    if ((this.data.startX - end) < 40) {
+    if ((this.data.startX - end) < 50) {
       if (flag == 0) {
         var list = this.data.rentList;
         list[index].cur_right = 0;
@@ -181,14 +181,18 @@ Page({
     var index = e.currentTarget.dataset.index;
     var flag = e.currentTarget.dataset.flag;
     if (flag == 0) {
-      this.data.rentList.splice(index,1);
-      this.setData({
-        rentList: that.data.rentList
+      app.rent.deleteProductByUser(that.data.rentList[index].id, function (res) {
+        that.data.rentList.splice(index, 1);
+        that.setData({
+          rentList: that.data.rentList
+        })
       })
     } else {
-      this.data.donateList.splice(index,1);
-      this.setData({
-        donateList: that.data.donateList
+      app.rent.deleteProductByUser(that.data.donateList[index].id, function (res) {
+        that.data.donateList.splice(index, 1);
+        that.setData({
+          donateList: that.data.donateList
+        })
       })
     }
   },
